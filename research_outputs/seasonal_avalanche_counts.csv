@@ -1,0 +1,25 @@
+season_start_year,season,positive_count,problem
+2020,2020-2021,180.0,Wind Slab
+2021,2021-2022,184.0,Wind Slab
+2022,2022-2023,336.0,Wind Slab
+2023,2023-2024,257.0,Wind Slab
+2024,2024-2025,217.0,Wind Slab
+2025,2025-2026,176.0,Wind Slab
+2020,2020-2021,67.0,Storm Slab
+2021,2021-2022,72.0,Storm Slab
+2022,2022-2023,100.0,Storm Slab
+2023,2023-2024,68.0,Storm Slab
+2024,2024-2025,94.0,Storm Slab
+2025,2025-2026,47.0,Storm Slab
+2020,2020-2021,97.0,Wet Loose
+2021,2021-2022,115.0,Wet Loose
+2022,2022-2023,88.0,Wet Loose
+2023,2023-2024,122.0,Wet Loose
+2024,2024-2025,124.0,Wet Loose
+2025,2025-2026,174.0,Wet Loose
+2020,2020-2021,38.0,Persistent Slab
+2021,2021-2022,9.0,Persistent Slab
+2022,2022-2023,17.0,Persistent Slab
+2023,2023-2024,38.0,Persistent Slab
+2024,2024-2025,23.0,Persistent Slab
+2025,2025-2026,20.0,Persistent Slab

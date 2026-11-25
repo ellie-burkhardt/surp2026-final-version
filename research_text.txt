@@ -1,0 +1,899 @@
+(base) EM4-6:SURP_2026_2.0_persistentSlab ellie$ conda run --live-stream --name base python -m ml.train
+Targets Check:
+None
+======================================================================
+AVALANCHE ML TRAINING PIPELINE
+======================================================================
+======================================================================
+DATASET LOADED
+======================================================================
+Path: /Users/ellie/SURP_2026_2.0_persistentSlab/data/processed/final_avalanche_dataset.parquet
+Rows: 3,819
+Columns: 189
+
+===== TARGETS =====
+Problem targets: 4
+['wind_slab_present', 'storm_slab_present', 'wet_loose_present', 'persistent_slab_present']
+Aspect targets: 0
+[]
+
+===== FORECAST TARGETS =====
+Forecast horizon: 3 days
+Created: 4
+Rows removed without future labels: 9
+Rows remaining: 3,810
+
+Future target positive counts:
+wind_slab_present_future                 positive=1350 rate=35.433%
+storm_slab_present_future                positive= 448 rate=11.759%
+wet_loose_present_future                 positive= 720 rate=18.898%
+persistent_slab_present_future           positive= 145 rate=3.806%
+
+==================================================
+FEATURE PRUNING SUMMARY
+==================================================
+Initial columns : 194
+Columns dropped : 57
+Remaining cols  : 137
+Initial Features : 137
+Features Dropped : 0
+Remaining        : 137
+
+Dropped Feature Categories:
+
+======================================================================
+FEATURE MATRIX AUDIT
+======================================================================
+Rows:    3,810
+Features: 116
+
+Features:
+  cold_spell_duration
+  day_cos
+  day_sin
+  days_since_10mm
+  days_since_25mm
+  days_since_50mm
+  days_since_major_loading
+  freeze_thaw_instability
+  heavy_snow_loading_event
+  low_density_snow_day
+  max_24h_precip
+  max_48h_precip
+  max_72h_precip
+  max_storm_7d
+  mountain_hood
+  mountain_rainier
+  mountain_shasta
+  prec
+  precip
+  precip_14d
+  precip_1d
+  precip_24h
+  precip_3d
+  precip_48h
+  precip_72h
+  precip_7d
+  precip_7d_sum
+  precip_change_1d
+  precip_intensification
+  precip_lag1
+  rain_snow_interaction
+  rapid_warming_event
+  recent_loading_temperature
+  season
+  snow_depth
+  snow_depth_1d
+  snow_depth_3d
+  snow_depth_7d
+  snow_depth_change
+  snow_depth_lag1
+  snowfall
+  snowfall_14d
+  snowfall_1d
+  snowfall_3d
+  snowfall_7d
+  snowfall_acceleration
+  snowfall_intensity_3d
+  snowfall_intensity_7d
+  snowfall_lag1
+  storm_loading_index
+  strong_warming_event
+  swe
+  swe_14d
+  swe_1d
+  swe_3d
+  swe_7d
+  swe_change
+  swe_lag1
+  temp
+  temp_7d_mean
+  temp_change_14d
+  temp_change_1d
+  temp_change_2d
+  temp_change_3d
+  temp_change_7d
+  temp_gradient
+  temp_lag1
+  temp_mean_14d
+  temp_mean_3d
+  temp_mean_7d
+  total_wind_loading
+  total_wind_loading_3d
+  total_wind_loading_7d
+  warming_snow_interaction
+  warming_week_index
+  wind_7d_mean
+  wind_dir_cos
+  wind_dir_sin
+  wind_load_e
+  wind_load_e_24h
+  wind_load_e_72h
+  wind_load_e_7d
+  wind_load_n
+  wind_load_n_24h
+  wind_load_n_72h
+  wind_load_n_7d
+  wind_load_ne
+  wind_load_ne_24h
+  wind_load_ne_72h
+  wind_load_ne_7d
+  wind_load_nw
+  wind_load_nw_24h
+  wind_load_nw_72h
+  wind_load_nw_7d
+  wind_load_s
+  wind_load_s_24h
+  wind_load_s_72h
+  wind_load_s_7d
+  wind_load_se
+  wind_load_se_24h
+  wind_load_se_72h
+  wind_load_se_7d
+  wind_load_sw
+  wind_load_sw_24h
+  wind_load_sw_72h
+  wind_load_sw_7d
+  wind_load_w
+  wind_load_w_24h
+  wind_load_w_72h
+  wind_load_w_7d
+  wind_loading_index
+  wind_loading_snow_interaction
+  wind_persistence_index
+  wind_snow_interaction
+  wind_speed
+  wind_speed_lag1
+
+Dtypes:
+float64    90
+float32    16
+int64       6
+int8        4
+Name: count, dtype: int64
+
+Missing values:
+temp_change_7d        21
+warming_week_index    21
+temp_change_3d         9
+temp_change_2d         6
+precip_change_1d       3
+precip_lag1            3
+snow_depth_change      3
+snow_depth_lag1        3
+snowfall_lag1          3
+swe_change             3
+swe_lag1               3
+temp_change_1d         3
+temp_lag1              3
+wind_speed_lag1        3
+
+Potential leakage names:
+  ✓ No obvious avalanche-target names found
+
+===== FEATURE MATRIX =====
+Rows: 3,810
+Features: 116
+Restricted features: {'day_sin': 0.1, 'day_cos': 0.1}
+
+======================================================================
+ROLLING-ORIGIN VALIDATION
+======================================================================
+
+Fold 1
+Train:      2021 -> 2023
+Validation: 2024 -> 2024
+Samples:    1,908 train | 639 validation
+
+Fold 2
+Train:      2021 -> 2024
+Validation: 2025 -> 2025
+Samples:    2,547 train | 636 validation
+
+Final test season reserved: 2026
+
+======================================================================
+TRAINING TARGET: wind_slab_present_future
+======================================================================
+
+===== wind_slab_present_future =====
+Total: 3810
+Positive: 1350
+Negative: 2460
+Rate: 35.4331%
+
+By mountain:
+          count  sum      mean
+mountain                      
+hood       1270  578  0.455118
+rainier    1270  401  0.315748
+shasta     1270  371  0.292126
+
+By year:
+      count  sum      mean
+date                      
+2020    276   50  0.181159
+2021    636  188  0.295597
+2022    636  203  0.319182
+2023    636  311  0.488994
+2024    639  266  0.416275
+2025    636  200  0.314465
+2026    351  132  0.376068
+
+By month:
+      count  sum      mean
+date                      
+1       558  259  0.464158
+2       507  328  0.646943
+3       558  306  0.548387
+4       531  115  0.216573
+10      558    0  0.000000
+11      540   43  0.079630
+12      558  299  0.535842
+
+======================================================================
+wind_slab_present_future - ROLLING FOLD 1
+======================================================================
+Train:      2021 -> 2023
+Validation: 2024 -> 2024
+
+======================================================================
+OPTIMIZING TARGET: wind_slab_present_future
+======================================================================
+Validation positives: 257 / 639 (40.219%)
+PR-AUC baseline: 0.40219
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.68701 | Baseline=0.40219 | Lift=1.71x | ROC-AUC=0.78889 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.69402 | Baseline=0.40219 | Lift=1.73x | ROC-AUC=0.78936 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.74037 | Baseline=0.40219 | Lift=1.84x | ROC-AUC=0.84515 | weight=2.00 | seasonal=36.66%
+[ 4/30] PR-AUC=0.70722 | Baseline=0.40219 | Lift=1.76x | ROC-AUC=0.80635 | weight=20.00 | seasonal=4.80%
+[ 5/30] PR-AUC=0.71304 | Baseline=0.40219 | Lift=1.77x | ROC-AUC=0.82608 | weight=1.50 | seasonal=12.48%
+[ 6/30] PR-AUC=0.72791 | Baseline=0.40219 | Lift=1.81x | ROC-AUC=0.83753 | weight=20.00 | seasonal=37.03%
+[ 7/30] PR-AUC=0.69170 | Baseline=0.40219 | Lift=1.72x | ROC-AUC=0.80117 | weight=1.00 | seasonal=3.61%
+[ 8/30] PR-AUC=0.67116 | Baseline=0.40219 | Lift=1.67x | ROC-AUC=0.78963 | weight=20.00 | seasonal=58.26%
+[ 9/30] PR-AUC=0.75500 | Baseline=0.40219 | Lift=1.88x | ROC-AUC=0.84992 | weight=2.00 | seasonal=32.38%
+[10/30] PR-AUC=0.74828 | Baseline=0.40219 | Lift=1.86x | ROC-AUC=0.84021 | weight=1.00 | seasonal=25.01%
+[11/30] PR-AUC=0.72540 | Baseline=0.40219 | Lift=1.80x | ROC-AUC=0.83076 | weight=2.00 | seasonal=18.96%
+[12/30] PR-AUC=0.68065 | Baseline=0.40219 | Lift=1.69x | ROC-AUC=0.78342 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.74659 | Baseline=0.40219 | Lift=1.86x | ROC-AUC=0.84336 | weight=1.00 | seasonal=38.52%
+[14/30] PR-AUC=0.68861 | Baseline=0.40219 | Lift=1.71x | ROC-AUC=0.79882 | weight=1.00 | seasonal=2.77%
+[15/30] PR-AUC=0.63929 | Baseline=0.40219 | Lift=1.59x | ROC-AUC=0.79351 | weight=10.00 | seasonal=75.27%
+[16/30] PR-AUC=0.60988 | Baseline=0.40219 | Lift=1.52x | ROC-AUC=0.77327 | weight=20.00 | seasonal=72.99%
+[17/30] PR-AUC=0.74633 | Baseline=0.40219 | Lift=1.86x | ROC-AUC=0.85438 | weight=3.00 | seasonal=30.29%
+[18/30] PR-AUC=0.63142 | Baseline=0.40219 | Lift=1.57x | ROC-AUC=0.76371 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.71289 | Baseline=0.40219 | Lift=1.77x | ROC-AUC=0.81155 | weight=1.00 | seasonal=4.10%
+[20/30] PR-AUC=0.66492 | Baseline=0.40219 | Lift=1.65x | ROC-AUC=0.78591 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.66492 | Baseline=0.40219 | Lift=1.65x | ROC-AUC=0.78591 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.63142 | Baseline=0.40219 | Lift=1.57x | ROC-AUC=0.76371 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.70980 | Baseline=0.40219 | Lift=1.76x | ROC-AUC=0.81104 | weight=1.00 | seasonal=4.41%
+[24/30] PR-AUC=0.74307 | Baseline=0.40219 | Lift=1.85x | ROC-AUC=0.84710 | weight=10.00 | seasonal=49.36%
+[25/30] PR-AUC=0.69127 | Baseline=0.40219 | Lift=1.72x | ROC-AUC=0.80094 | weight=10.00 | seasonal=7.26%
+[26/30] PR-AUC=0.69342 | Baseline=0.40219 | Lift=1.72x | ROC-AUC=0.79208 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.71621 | Baseline=0.40219 | Lift=1.78x | ROC-AUC=0.83065 | weight=1.50 | seasonal=23.63%
+[28/30] PR-AUC=0.68162 | Baseline=0.40219 | Lift=1.69x | ROC-AUC=0.79330 | weight=10.00 | seasonal=33.54%
+[29/30] PR-AUC=0.74685 | Baseline=0.40219 | Lift=1.86x | ROC-AUC=0.84824 | weight=1.00 | seasonal=31.04%
+[30/30] PR-AUC=0.74969 | Baseline=0.40219 | Lift=1.86x | ROC-AUC=0.84324 | weight=1.00 | seasonal=32.79%
+----------------------------------------------------------------------
+BEST VALID MODEL: wind_slab_present_future
+PR-AUC:            0.75500
+PR-AUC baseline:   0.40219
+PR-AUC lift:       1.88x
+ROC-AUC:           0.84992
+Seasonal importance: 32.38%
+Best iteration: 302
+Fold 1: PR-AUC=0.75500
+
+======================================================================
+wind_slab_present_future - ROLLING FOLD 2
+======================================================================
+Train:      2021 -> 2024
+Validation: 2025 -> 2025
+
+======================================================================
+OPTIMIZING TARGET: wind_slab_present_future
+======================================================================
+Validation positives: 217 / 636 (34.119%)
+PR-AUC baseline: 0.34119
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.53704 | Baseline=0.34119 | Lift=1.57x | ROC-AUC=0.73505 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.49930 | Baseline=0.34119 | Lift=1.46x | ROC-AUC=0.70245 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.60322 | Baseline=0.34119 | Lift=1.77x | ROC-AUC=0.79531 | weight=2.00 | seasonal=41.25%
+[ 4/30] PR-AUC=0.54328 | Baseline=0.34119 | Lift=1.59x | ROC-AUC=0.73684 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.55479 | Baseline=0.34119 | Lift=1.63x | ROC-AUC=0.73572 | weight=1.50 | seasonal=0.00%
+[ 6/30] PR-AUC=0.61379 | Baseline=0.34119 | Lift=1.80x | ROC-AUC=0.80077 | weight=20.00 | seasonal=54.01%
+[ 7/30] PR-AUC=0.56009 | Baseline=0.34119 | Lift=1.64x | ROC-AUC=0.75051 | weight=1.00 | seasonal=0.00%
+[ 8/30] PR-AUC=0.56712 | Baseline=0.34119 | Lift=1.66x | ROC-AUC=0.78968 | weight=20.00 | seasonal=51.39%
+[ 9/30] PR-AUC=0.58422 | Baseline=0.34119 | Lift=1.71x | ROC-AUC=0.77717 | weight=2.00 | seasonal=24.15%
+[10/30] PR-AUC=0.62164 | Baseline=0.34119 | Lift=1.82x | ROC-AUC=0.79713 | weight=1.00 | seasonal=20.04%
+[11/30] PR-AUC=0.52639 | Baseline=0.34119 | Lift=1.54x | ROC-AUC=0.74301 | weight=2.00 | seasonal=54.90%
+[12/30] PR-AUC=0.55353 | Baseline=0.34119 | Lift=1.62x | ROC-AUC=0.74705 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.60053 | Baseline=0.34119 | Lift=1.76x | ROC-AUC=0.79287 | weight=1.00 | seasonal=38.58%
+[14/30] PR-AUC=0.56852 | Baseline=0.34119 | Lift=1.67x | ROC-AUC=0.75018 | weight=1.00 | seasonal=2.21%
+[15/30] PR-AUC=0.61122 | Baseline=0.34119 | Lift=1.79x | ROC-AUC=0.78924 | weight=10.00 | seasonal=58.42%
+[16/30] PR-AUC=0.52803 | Baseline=0.34119 | Lift=1.55x | ROC-AUC=0.74905 | weight=20.00 | seasonal=73.47%
+[17/30] PR-AUC=0.62523 | Baseline=0.34119 | Lift=1.83x | ROC-AUC=0.79385 | weight=3.00 | seasonal=32.12%
+[18/30] PR-AUC=0.52116 | Baseline=0.34119 | Lift=1.53x | ROC-AUC=0.73670 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.58485 | Baseline=0.34119 | Lift=1.71x | ROC-AUC=0.75912 | weight=1.00 | seasonal=0.00%
+[20/30] PR-AUC=0.56584 | Baseline=0.34119 | Lift=1.66x | ROC-AUC=0.74525 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.54912 | Baseline=0.34119 | Lift=1.61x | ROC-AUC=0.75800 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.52193 | Baseline=0.34119 | Lift=1.53x | ROC-AUC=0.73554 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.55098 | Baseline=0.34119 | Lift=1.61x | ROC-AUC=0.73531 | weight=1.00 | seasonal=0.00%
+[24/30] PR-AUC=0.59342 | Baseline=0.34119 | Lift=1.74x | ROC-AUC=0.80490 | weight=10.00 | seasonal=71.42%
+[25/30] PR-AUC=0.58373 | Baseline=0.34119 | Lift=1.71x | ROC-AUC=0.77577 | weight=10.00 | seasonal=16.38%
+[26/30] PR-AUC=0.48487 | Baseline=0.34119 | Lift=1.42x | ROC-AUC=0.69188 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.61064 | Baseline=0.34119 | Lift=1.79x | ROC-AUC=0.78247 | weight=1.50 | seasonal=22.64%
+[28/30] PR-AUC=0.57473 | Baseline=0.34119 | Lift=1.68x | ROC-AUC=0.75926 | weight=10.00 | seasonal=30.58%
+[29/30] PR-AUC=0.60555 | Baseline=0.34119 | Lift=1.77x | ROC-AUC=0.79036 | weight=1.00 | seasonal=32.42%
+[30/30] PR-AUC=0.49424 | Baseline=0.34119 | Lift=1.45x | ROC-AUC=0.70093 | weight=1.00 | seasonal=54.45%
+----------------------------------------------------------------------
+BEST VALID MODEL: wind_slab_present_future
+PR-AUC:            0.62523
+PR-AUC baseline:   0.34119
+PR-AUC lift:       1.83x
+ROC-AUC:           0.79385
+Seasonal importance: 32.12%
+Best iteration: 63
+Fold 2: PR-AUC=0.62523
+
+======================================================================
+ROLLING VALIDATION SUMMARY: wind_slab_present_future
+======================================================================
+Fold 1 PR-AUC: 0.75500
+Fold 2 PR-AUC: 0.62523
+Mean PR-AUC:    0.69012
+
+TRAINED wind_slab_present_future: Mean rolling PR-AUC=0.69012, seasonal=32.38%
+
+----------------------------------------------------------------------
+TEST RESULTS: wind_slab_present_future
+----------------------------------------------------------------------
+PR-AUC:            0.53801
+ROC-AUC:           0.78623
+F1:                0.58275
+Precision:         0.49407
+Recall:            0.71023
+Specificity:       0.71619
+Balanced accuracy: 0.71321
+MCC:               0.39055
+
+======================================================================
+TRAINING TARGET: storm_slab_present_future
+======================================================================
+
+===== storm_slab_present_future =====
+Total: 3810
+Positive: 448
+Negative: 3362
+Rate: 11.7585%
+
+By mountain:
+          count  sum      mean
+mountain                      
+hood       1270  136  0.107087
+rainier    1270  201  0.158268
+shasta     1270  111  0.087402
+
+By year:
+      count  sum      mean
+date                      
+2020    276   24  0.086957
+2021    636   81  0.127358
+2022    636   63  0.099057
+2023    636   79  0.124214
+2024    639   89  0.139280
+2025    636   78  0.122642
+2026    351   34  0.096866
+
+By month:
+      count  sum      mean
+date                      
+1       558   90  0.161290
+2       507  115  0.226824
+3       558   85  0.152330
+4       531   17  0.032015
+10      558    0  0.000000
+11      540    7  0.012963
+12      558  134  0.240143
+
+======================================================================
+storm_slab_present_future - ROLLING FOLD 1
+======================================================================
+Train:      2021 -> 2023
+Validation: 2024 -> 2024
+
+======================================================================
+OPTIMIZING TARGET: storm_slab_present_future
+======================================================================
+Validation positives: 68 / 639 (10.642%)
+PR-AUC baseline: 0.10642
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.22472 | Baseline=0.10642 | Lift=2.11x | ROC-AUC=0.72462 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.28928 | Baseline=0.10642 | Lift=2.72x | ROC-AUC=0.76535 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.32020 | Baseline=0.10642 | Lift=3.01x | ROC-AUC=0.78989 | weight=2.00 | seasonal=49.11%
+[ 4/30] PR-AUC=0.26649 | Baseline=0.10642 | Lift=2.50x | ROC-AUC=0.78696 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.33071 | Baseline=0.10642 | Lift=3.11x | ROC-AUC=0.77429 | weight=1.50 | seasonal=1.85%
+[ 6/30] PR-AUC=0.27926 | Baseline=0.10642 | Lift=2.62x | ROC-AUC=0.77676 | weight=20.00 | seasonal=26.30%
+[ 7/30] PR-AUC=0.27931 | Baseline=0.10642 | Lift=2.62x | ROC-AUC=0.77135 | weight=1.00 | seasonal=3.26%
+[ 8/30] PR-AUC=0.32402 | Baseline=0.10642 | Lift=3.04x | ROC-AUC=0.80326 | weight=20.00 | seasonal=31.38%
+[ 9/30] PR-AUC=0.29396 | Baseline=0.10642 | Lift=2.76x | ROC-AUC=0.79803 | weight=2.00 | seasonal=19.08%
+[10/30] PR-AUC=0.37747 | Baseline=0.10642 | Lift=3.55x | ROC-AUC=0.80723 | weight=1.00 | seasonal=12.72%
+[11/30] PR-AUC=0.30088 | Baseline=0.10642 | Lift=2.83x | ROC-AUC=0.77879 | weight=2.00 | seasonal=7.04%
+[12/30] PR-AUC=0.28334 | Baseline=0.10642 | Lift=2.66x | ROC-AUC=0.79062 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.35628 | Baseline=0.10642 | Lift=3.35x | ROC-AUC=0.78626 | weight=1.00 | seasonal=34.27%
+[14/30] PR-AUC=0.30751 | Baseline=0.10642 | Lift=2.89x | ROC-AUC=0.79265 | weight=1.00 | seasonal=20.35%
+[15/30] PR-AUC=0.33388 | Baseline=0.10642 | Lift=3.14x | ROC-AUC=0.81186 | weight=10.00 | seasonal=15.34%
+[16/30] PR-AUC=0.32443 | Baseline=0.10642 | Lift=3.05x | ROC-AUC=0.82305 | weight=20.00 | seasonal=15.81%
+[17/30] PR-AUC=0.31452 | Baseline=0.10642 | Lift=2.96x | ROC-AUC=0.78868 | weight=3.00 | seasonal=12.02%
+[18/30] PR-AUC=0.30347 | Baseline=0.10642 | Lift=2.85x | ROC-AUC=0.77785 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.31040 | Baseline=0.10642 | Lift=2.92x | ROC-AUC=0.78199 | weight=1.00 | seasonal=2.65%
+[20/30] PR-AUC=0.27539 | Baseline=0.10642 | Lift=2.59x | ROC-AUC=0.77210 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.28014 | Baseline=0.10642 | Lift=2.63x | ROC-AUC=0.78680 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.28932 | Baseline=0.10642 | Lift=2.72x | ROC-AUC=0.78289 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.29505 | Baseline=0.10642 | Lift=2.77x | ROC-AUC=0.79819 | weight=1.00 | seasonal=17.24%
+[24/30] PR-AUC=0.30276 | Baseline=0.10642 | Lift=2.85x | ROC-AUC=0.81076 | weight=10.00 | seasonal=32.61%
+[25/30] PR-AUC=0.27575 | Baseline=0.10642 | Lift=2.59x | ROC-AUC=0.78737 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.32974 | Baseline=0.10642 | Lift=3.10x | ROC-AUC=0.79960 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.38953 | Baseline=0.10642 | Lift=3.66x | ROC-AUC=0.79535 | weight=1.50 | seasonal=25.11%
+[28/30] PR-AUC=0.29995 | Baseline=0.10642 | Lift=2.82x | ROC-AUC=0.82505 | weight=10.00 | seasonal=3.37%
+[29/30] PR-AUC=0.37397 | Baseline=0.10642 | Lift=3.51x | ROC-AUC=0.76128 | weight=1.00 | seasonal=30.37%
+[30/30] PR-AUC=0.33255 | Baseline=0.10642 | Lift=3.12x | ROC-AUC=0.78804 | weight=1.00 | seasonal=42.66%
+----------------------------------------------------------------------
+BEST VALID MODEL: storm_slab_present_future
+PR-AUC:            0.38953
+PR-AUC baseline:   0.10642
+PR-AUC lift:       3.66x
+ROC-AUC:           0.79535
+Seasonal importance: 25.11%
+Best iteration: 22
+Fold 1: PR-AUC=0.38953
+
+======================================================================
+storm_slab_present_future - ROLLING FOLD 2
+======================================================================
+Train:      2021 -> 2024
+Validation: 2025 -> 2025
+
+======================================================================
+OPTIMIZING TARGET: storm_slab_present_future
+======================================================================
+Validation positives: 94 / 636 (14.780%)
+PR-AUC baseline: 0.14780
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.29241 | Baseline=0.14780 | Lift=1.98x | ROC-AUC=0.71489 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.28277 | Baseline=0.14780 | Lift=1.91x | ROC-AUC=0.72624 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.33181 | Baseline=0.14780 | Lift=2.25x | ROC-AUC=0.74001 | weight=2.00 | seasonal=29.19%
+[ 4/30] PR-AUC=0.29143 | Baseline=0.14780 | Lift=1.97x | ROC-AUC=0.74982 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.35163 | Baseline=0.14780 | Lift=2.38x | ROC-AUC=0.75156 | weight=1.50 | seasonal=44.54%
+[ 6/30] PR-AUC=0.34502 | Baseline=0.14780 | Lift=2.33x | ROC-AUC=0.76778 | weight=20.00 | seasonal=52.45%
+[ 7/30] PR-AUC=0.29849 | Baseline=0.14780 | Lift=2.02x | ROC-AUC=0.72598 | weight=1.00 | seasonal=7.30%
+[ 8/30] PR-AUC=0.36838 | Baseline=0.14780 | Lift=2.49x | ROC-AUC=0.75762 | weight=20.00 | seasonal=38.87%
+[ 9/30] PR-AUC=0.32305 | Baseline=0.14780 | Lift=2.19x | ROC-AUC=0.75866 | weight=2.00 | seasonal=9.36%
+[10/30] PR-AUC=0.32503 | Baseline=0.14780 | Lift=2.20x | ROC-AUC=0.75744 | weight=1.00 | seasonal=23.90%
+[11/30] PR-AUC=0.33585 | Baseline=0.14780 | Lift=2.27x | ROC-AUC=0.74920 | weight=2.00 | seasonal=13.58%
+[12/30] PR-AUC=0.32288 | Baseline=0.14780 | Lift=2.18x | ROC-AUC=0.73571 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.32505 | Baseline=0.14780 | Lift=2.20x | ROC-AUC=0.72279 | weight=1.00 | seasonal=44.92%
+[14/30] PR-AUC=0.34818 | Baseline=0.14780 | Lift=2.36x | ROC-AUC=0.75279 | weight=1.00 | seasonal=16.31%
+[15/30] PR-AUC=0.31376 | Baseline=0.14780 | Lift=2.12x | ROC-AUC=0.74996 | weight=10.00 | seasonal=25.84%
+[16/30] PR-AUC=0.27870 | Baseline=0.14780 | Lift=1.89x | ROC-AUC=0.75307 | weight=20.00 | seasonal=32.41%
+[17/30] PR-AUC=0.30257 | Baseline=0.14780 | Lift=2.05x | ROC-AUC=0.74382 | weight=3.00 | seasonal=18.44%
+[18/30] PR-AUC=0.30609 | Baseline=0.14780 | Lift=2.07x | ROC-AUC=0.71975 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.31657 | Baseline=0.14780 | Lift=2.14x | ROC-AUC=0.72683 | weight=1.00 | seasonal=20.40%
+[20/30] PR-AUC=0.30440 | Baseline=0.14780 | Lift=2.06x | ROC-AUC=0.72126 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.29408 | Baseline=0.14780 | Lift=1.99x | ROC-AUC=0.72876 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.31997 | Baseline=0.14780 | Lift=2.16x | ROC-AUC=0.73162 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.34182 | Baseline=0.14780 | Lift=2.31x | ROC-AUC=0.73471 | weight=1.00 | seasonal=12.94%
+[24/30] PR-AUC=0.37091 | Baseline=0.14780 | Lift=2.51x | ROC-AUC=0.74958 | weight=10.00 | seasonal=28.18%
+[25/30] PR-AUC=0.29204 | Baseline=0.14780 | Lift=1.98x | ROC-AUC=0.73777 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.29594 | Baseline=0.14780 | Lift=2.00x | ROC-AUC=0.74792 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.33824 | Baseline=0.14780 | Lift=2.29x | ROC-AUC=0.75546 | weight=1.50 | seasonal=17.42%
+[28/30] PR-AUC=0.31371 | Baseline=0.14780 | Lift=2.12x | ROC-AUC=0.74774 | weight=10.00 | seasonal=20.44%
+[29/30] PR-AUC=0.32406 | Baseline=0.14780 | Lift=2.19x | ROC-AUC=0.73744 | weight=1.00 | seasonal=28.98%
+[30/30] PR-AUC=0.34269 | Baseline=0.14780 | Lift=2.32x | ROC-AUC=0.74590 | weight=1.00 | seasonal=34.81%
+----------------------------------------------------------------------
+BEST VALID MODEL: storm_slab_present_future
+PR-AUC:            0.37091
+PR-AUC baseline:   0.14780
+PR-AUC lift:       2.51x
+ROC-AUC:           0.74958
+Seasonal importance: 28.18%
+Best iteration: 11
+Fold 2: PR-AUC=0.37091
+
+======================================================================
+ROLLING VALIDATION SUMMARY: storm_slab_present_future
+======================================================================
+Fold 1 PR-AUC: 0.38953
+Fold 2 PR-AUC: 0.37091
+Mean PR-AUC:    0.38022
+
+TRAINED storm_slab_present_future: Mean rolling PR-AUC=0.38022, seasonal=25.11%
+
+----------------------------------------------------------------------
+TEST RESULTS: storm_slab_present_future
+----------------------------------------------------------------------
+PR-AUC:            0.14254
+ROC-AUC:           0.74916
+F1:                0.06977
+Precision:         0.07692
+Recall:            0.06383
+Specificity:       0.93793
+Balanced accuracy: 0.50088
+MCC:               0.00192
+
+======================================================================
+TRAINING TARGET: wet_loose_present_future
+======================================================================
+
+===== wet_loose_present_future =====
+Total: 3810
+Positive: 720
+Negative: 3090
+Rate: 18.8976%
+
+By mountain:
+          count  sum      mean
+mountain                      
+hood       1270  288  0.226772
+rainier    1270  297  0.233858
+shasta     1270  135  0.106299
+
+By year:
+      count  sum      mean
+date                      
+2020    276   23  0.083333
+2021    636   79  0.124214
+2022    636  113  0.177673
+2023    636   89  0.139937
+2024    639  145  0.226917
+2025    636  137  0.215409
+2026    351  134  0.381766
+
+By month:
+      count  sum      mean
+date                      
+1       558  130  0.232975
+2       507  137  0.270217
+3       558  225  0.403226
+4       531  126  0.237288
+10      558    0  0.000000
+11      540   11  0.020370
+12      558   91  0.163082
+
+======================================================================
+wet_loose_present_future - ROLLING FOLD 1
+======================================================================
+Train:      2021 -> 2023
+Validation: 2024 -> 2024
+
+======================================================================
+OPTIMIZING TARGET: wet_loose_present_future
+======================================================================
+Validation positives: 122 / 639 (19.092%)
+PR-AUC baseline: 0.19092
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.46328 | Baseline=0.19092 | Lift=2.43x | ROC-AUC=0.81147 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.43578 | Baseline=0.19092 | Lift=2.28x | ROC-AUC=0.79109 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.55778 | Baseline=0.19092 | Lift=2.92x | ROC-AUC=0.81118 | weight=2.00 | seasonal=40.79%
+[ 4/30] PR-AUC=0.49131 | Baseline=0.19092 | Lift=2.57x | ROC-AUC=0.80226 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.49496 | Baseline=0.19092 | Lift=2.59x | ROC-AUC=0.82862 | weight=1.50 | seasonal=25.21%
+[ 6/30] PR-AUC=0.54356 | Baseline=0.19092 | Lift=2.85x | ROC-AUC=0.80488 | weight=20.00 | seasonal=32.61%
+[ 7/30] PR-AUC=0.49891 | Baseline=0.19092 | Lift=2.61x | ROC-AUC=0.81086 | weight=1.00 | seasonal=12.35%
+[ 8/30] PR-AUC=0.57355 | Baseline=0.19092 | Lift=3.00x | ROC-AUC=0.82823 | weight=20.00 | seasonal=41.38%
+[ 9/30] PR-AUC=0.49919 | Baseline=0.19092 | Lift=2.61x | ROC-AUC=0.81951 | weight=2.00 | seasonal=37.29%
+[10/30] PR-AUC=0.47246 | Baseline=0.19092 | Lift=2.47x | ROC-AUC=0.76990 | weight=1.00 | seasonal=31.74%
+[11/30] PR-AUC=0.48806 | Baseline=0.19092 | Lift=2.56x | ROC-AUC=0.81341 | weight=2.00 | seasonal=19.89%
+[12/30] PR-AUC=0.44299 | Baseline=0.19092 | Lift=2.32x | ROC-AUC=0.79415 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.59475 | Baseline=0.19092 | Lift=3.12x | ROC-AUC=0.80854 | weight=1.00 | seasonal=33.24%
+[14/30] PR-AUC=0.50906 | Baseline=0.19092 | Lift=2.67x | ROC-AUC=0.82299 | weight=1.00 | seasonal=24.81%
+[15/30] PR-AUC=0.50349 | Baseline=0.19092 | Lift=2.64x | ROC-AUC=0.81536 | weight=10.00 | seasonal=34.03%
+[16/30] PR-AUC=0.53827 | Baseline=0.19092 | Lift=2.82x | ROC-AUC=0.78898 | weight=20.00 | seasonal=22.79%
+[17/30] PR-AUC=0.50786 | Baseline=0.19092 | Lift=2.66x | ROC-AUC=0.81304 | weight=3.00 | seasonal=13.82%
+[18/30] PR-AUC=0.41793 | Baseline=0.19092 | Lift=2.19x | ROC-AUC=0.78670 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.49960 | Baseline=0.19092 | Lift=2.62x | ROC-AUC=0.81400 | weight=1.00 | seasonal=13.87%
+[20/30] PR-AUC=0.46533 | Baseline=0.19092 | Lift=2.44x | ROC-AUC=0.81154 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.48241 | Baseline=0.19092 | Lift=2.53x | ROC-AUC=0.81617 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.41785 | Baseline=0.19092 | Lift=2.19x | ROC-AUC=0.78661 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.48649 | Baseline=0.19092 | Lift=2.55x | ROC-AUC=0.79787 | weight=1.00 | seasonal=28.13%
+[24/30] PR-AUC=0.54002 | Baseline=0.19092 | Lift=2.83x | ROC-AUC=0.80801 | weight=10.00 | seasonal=35.12%
+[25/30] PR-AUC=0.43011 | Baseline=0.19092 | Lift=2.25x | ROC-AUC=0.80124 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.42390 | Baseline=0.19092 | Lift=2.22x | ROC-AUC=0.80120 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.52539 | Baseline=0.19092 | Lift=2.75x | ROC-AUC=0.82370 | weight=1.50 | seasonal=32.32%
+[28/30] PR-AUC=0.49866 | Baseline=0.19092 | Lift=2.61x | ROC-AUC=0.80685 | weight=10.00 | seasonal=11.79%
+[29/30] PR-AUC=0.57312 | Baseline=0.19092 | Lift=3.00x | ROC-AUC=0.84077 | weight=1.00 | seasonal=53.44%
+[30/30] PR-AUC=0.58966 | Baseline=0.19092 | Lift=3.09x | ROC-AUC=0.81266 | weight=1.00 | seasonal=31.79%
+----------------------------------------------------------------------
+BEST VALID MODEL: wet_loose_present_future
+PR-AUC:            0.59475
+PR-AUC baseline:   0.19092
+PR-AUC lift:       3.12x
+ROC-AUC:           0.80854
+Seasonal importance: 33.24%
+Best iteration: 4
+Fold 1: PR-AUC=0.59475
+
+======================================================================
+wet_loose_present_future - ROLLING FOLD 2
+======================================================================
+Train:      2021 -> 2024
+Validation: 2025 -> 2025
+
+======================================================================
+OPTIMIZING TARGET: wet_loose_present_future
+======================================================================
+Validation positives: 124 / 636 (19.497%)
+PR-AUC baseline: 0.19497
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.33141 | Baseline=0.19497 | Lift=1.70x | ROC-AUC=0.71547 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.41587 | Baseline=0.19497 | Lift=2.13x | ROC-AUC=0.74053 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.43630 | Baseline=0.19497 | Lift=2.24x | ROC-AUC=0.77122 | weight=2.00 | seasonal=20.19%
+[ 4/30] PR-AUC=0.38091 | Baseline=0.19497 | Lift=1.95x | ROC-AUC=0.75328 | weight=20.00 | seasonal=0.11%
+[ 5/30] PR-AUC=0.40692 | Baseline=0.19497 | Lift=2.09x | ROC-AUC=0.74301 | weight=1.50 | seasonal=1.71%
+[ 6/30] PR-AUC=0.40869 | Baseline=0.19497 | Lift=2.10x | ROC-AUC=0.78331 | weight=20.00 | seasonal=15.54%
+[ 7/30] PR-AUC=0.38226 | Baseline=0.19497 | Lift=1.96x | ROC-AUC=0.70848 | weight=1.00 | seasonal=2.41%
+[ 8/30] PR-AUC=0.42619 | Baseline=0.19497 | Lift=2.19x | ROC-AUC=0.78713 | weight=20.00 | seasonal=20.63%
+[ 9/30] PR-AUC=0.42177 | Baseline=0.19497 | Lift=2.16x | ROC-AUC=0.75871 | weight=2.00 | seasonal=11.36%
+[10/30] PR-AUC=0.41813 | Baseline=0.19497 | Lift=2.14x | ROC-AUC=0.77366 | weight=1.00 | seasonal=16.13%
+[11/30] PR-AUC=0.39269 | Baseline=0.19497 | Lift=2.01x | ROC-AUC=0.72582 | weight=2.00 | seasonal=19.08%
+[12/30] PR-AUC=0.30660 | Baseline=0.19497 | Lift=1.57x | ROC-AUC=0.69709 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.39535 | Baseline=0.19497 | Lift=2.03x | ROC-AUC=0.74186 | weight=1.00 | seasonal=20.40%
+[14/30] PR-AUC=0.39782 | Baseline=0.19497 | Lift=2.04x | ROC-AUC=0.72099 | weight=1.00 | seasonal=16.22%
+[15/30] PR-AUC=0.36831 | Baseline=0.19497 | Lift=1.89x | ROC-AUC=0.73565 | weight=10.00 | seasonal=15.93%
+[16/30] PR-AUC=0.38078 | Baseline=0.19497 | Lift=1.95x | ROC-AUC=0.75454 | weight=20.00 | seasonal=6.98%
+[17/30] PR-AUC=0.42851 | Baseline=0.19497 | Lift=2.20x | ROC-AUC=0.76624 | weight=3.00 | seasonal=11.89%
+[18/30] PR-AUC=0.35788 | Baseline=0.19497 | Lift=1.84x | ROC-AUC=0.71919 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.38841 | Baseline=0.19497 | Lift=1.99x | ROC-AUC=0.70894 | weight=1.00 | seasonal=3.63%
+[20/30] PR-AUC=0.30548 | Baseline=0.19497 | Lift=1.57x | ROC-AUC=0.69308 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.30548 | Baseline=0.19497 | Lift=1.57x | ROC-AUC=0.69308 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.37230 | Baseline=0.19497 | Lift=1.91x | ROC-AUC=0.73083 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.41143 | Baseline=0.19497 | Lift=2.11x | ROC-AUC=0.74920 | weight=1.00 | seasonal=8.09%
+[24/30] PR-AUC=0.34134 | Baseline=0.19497 | Lift=1.75x | ROC-AUC=0.72182 | weight=10.00 | seasonal=33.22%
+[25/30] PR-AUC=0.30067 | Baseline=0.19497 | Lift=1.54x | ROC-AUC=0.68566 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.39072 | Baseline=0.19497 | Lift=2.00x | ROC-AUC=0.75050 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.39364 | Baseline=0.19497 | Lift=2.02x | ROC-AUC=0.73323 | weight=1.50 | seasonal=24.27%
+[28/30] PR-AUC=0.41060 | Baseline=0.19497 | Lift=2.11x | ROC-AUC=0.76071 | weight=10.00 | seasonal=4.60%
+[29/30] PR-AUC=0.34951 | Baseline=0.19497 | Lift=1.79x | ROC-AUC=0.72161 | weight=1.00 | seasonal=45.82%
+[30/30] PR-AUC=0.38305 | Baseline=0.19497 | Lift=1.96x | ROC-AUC=0.73919 | weight=1.00 | seasonal=32.24%
+----------------------------------------------------------------------
+BEST VALID MODEL: wet_loose_present_future
+PR-AUC:            0.43630
+PR-AUC baseline:   0.19497
+PR-AUC lift:       2.24x
+ROC-AUC:           0.77122
+Seasonal importance: 20.19%
+Best iteration: 111
+Fold 2: PR-AUC=0.43630
+
+======================================================================
+ROLLING VALIDATION SUMMARY: wet_loose_present_future
+======================================================================
+Fold 1 PR-AUC: 0.59475
+Fold 2 PR-AUC: 0.43630
+Mean PR-AUC:    0.51552
+
+TRAINED wet_loose_present_future: Mean rolling PR-AUC=0.51552, seasonal=33.24%
+
+----------------------------------------------------------------------
+TEST RESULTS: wet_loose_present_future
+----------------------------------------------------------------------
+PR-AUC:            0.40078
+ROC-AUC:           0.63979
+F1:                0.43119
+Precision:         0.35878
+Recall:            0.54023
+Specificity:       0.62914
+Balanced accuracy: 0.58468
+MCC:               0.15377
+
+======================================================================
+TRAINING TARGET: persistent_slab_present_future
+======================================================================
+
+===== persistent_slab_present_future =====
+Total: 3810
+Positive: 145
+Negative: 3665
+Rate: 3.8058%
+
+By mountain:
+          count  sum      mean
+mountain                      
+hood       1270   12  0.009449
+rainier    1270  124  0.097638
+shasta     1270    9  0.007087
+
+By year:
+      count  sum      mean
+date                      
+2020    276    0  0.000000
+2021    636   38  0.059748
+2022    636   26  0.040881
+2023    636    0  0.000000
+2024    639   38  0.059468
+2025    636   23  0.036164
+2026    351   20  0.056980
+
+By month:
+      count  sum      mean
+date                      
+1       558   22  0.039427
+2       507   67  0.132150
+3       558   39  0.069892
+4       531    0  0.000000
+10      558    0  0.000000
+11      540    0  0.000000
+12      558   17  0.030466
+
+======================================================================
+persistent_slab_present_future - ROLLING FOLD 1
+======================================================================
+Train:      2021 -> 2023
+Validation: 2024 -> 2024
+
+======================================================================
+OPTIMIZING TARGET: persistent_slab_present_future
+======================================================================
+Validation positives: 38 / 639 (5.947%)
+PR-AUC baseline: 0.05947
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.46488 | Baseline=0.05947 | Lift=7.82x | ROC-AUC=0.95792 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.62168 | Baseline=0.05947 | Lift=10.45x | ROC-AUC=0.96046 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.62280 | Baseline=0.05947 | Lift=10.47x | ROC-AUC=0.93169 | weight=2.00 | seasonal=3.07%
+[ 4/30] PR-AUC=0.60737 | Baseline=0.05947 | Lift=10.21x | ROC-AUC=0.94947 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.58977 | Baseline=0.05947 | Lift=9.92x | ROC-AUC=0.92263 | weight=1.50 | seasonal=1.48%
+[ 6/30] PR-AUC=0.66153 | Baseline=0.05947 | Lift=11.12x | ROC-AUC=0.96217 | weight=20.00 | seasonal=7.91%
+[ 7/30] PR-AUC=0.62325 | Baseline=0.05947 | Lift=10.48x | ROC-AUC=0.93495 | weight=1.00 | seasonal=22.34%
+[ 8/30] PR-AUC=0.77186 | Baseline=0.05947 | Lift=12.98x | ROC-AUC=0.96536 | weight=20.00 | seasonal=3.93%
+[ 9/30] PR-AUC=0.72275 | Baseline=0.05947 | Lift=12.15x | ROC-AUC=0.96243 | weight=2.00 | seasonal=3.24%
+[10/30] PR-AUC=0.50811 | Baseline=0.05947 | Lift=8.54x | ROC-AUC=0.93082 | weight=1.00 | seasonal=3.11%
+[11/30] PR-AUC=0.75564 | Baseline=0.05947 | Lift=12.71x | ROC-AUC=0.96882 | weight=2.00 | seasonal=16.74%
+[12/30] PR-AUC=0.43655 | Baseline=0.05947 | Lift=7.34x | ROC-AUC=0.95477 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.69818 | Baseline=0.05947 | Lift=11.74x | ROC-AUC=0.95210 | weight=1.00 | seasonal=9.08%
+[14/30] PR-AUC=0.77132 | Baseline=0.05947 | Lift=12.97x | ROC-AUC=0.94658 | weight=1.00 | seasonal=9.62%
+[15/30] PR-AUC=0.73155 | Baseline=0.05947 | Lift=12.30x | ROC-AUC=0.97228 | weight=10.00 | seasonal=1.96%
+[16/30] PR-AUC=0.66769 | Baseline=0.05947 | Lift=11.23x | ROC-AUC=0.96353 | weight=20.00 | seasonal=0.00%
+[17/30] PR-AUC=0.68743 | Baseline=0.05947 | Lift=11.56x | ROC-AUC=0.95560 | weight=3.00 | seasonal=17.42%
+[18/30] PR-AUC=0.55322 | Baseline=0.05947 | Lift=9.30x | ROC-AUC=0.94636 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.55102 | Baseline=0.05947 | Lift=9.27x | ROC-AUC=0.90772 | weight=1.00 | seasonal=28.79%
+[20/30] PR-AUC=0.44138 | Baseline=0.05947 | Lift=7.42x | ROC-AUC=0.93115 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.42540 | Baseline=0.05947 | Lift=7.15x | ROC-AUC=0.92469 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.55992 | Baseline=0.05947 | Lift=9.42x | ROC-AUC=0.95967 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.64012 | Baseline=0.05947 | Lift=10.76x | ROC-AUC=0.95162 | weight=1.00 | seasonal=0.40%
+[24/30] PR-AUC=0.72653 | Baseline=0.05947 | Lift=12.22x | ROC-AUC=0.96199 | weight=10.00 | seasonal=7.57%
+[25/30] PR-AUC=0.60400 | Baseline=0.05947 | Lift=10.16x | ROC-AUC=0.94207 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.61318 | Baseline=0.05947 | Lift=10.31x | ROC-AUC=0.95293 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.68533 | Baseline=0.05947 | Lift=11.52x | ROC-AUC=0.94789 | weight=1.50 | seasonal=36.96%
+[28/30] PR-AUC=0.66396 | Baseline=0.05947 | Lift=11.17x | ROC-AUC=0.95726 | weight=10.00 | seasonal=1.76%
+[29/30] PR-AUC=0.63796 | Baseline=0.05947 | Lift=10.73x | ROC-AUC=0.94483 | weight=1.00 | seasonal=31.61%
+[30/30] PR-AUC=0.71073 | Baseline=0.05947 | Lift=11.95x | ROC-AUC=0.96576 | weight=1.00 | seasonal=0.00%
+----------------------------------------------------------------------
+BEST VALID MODEL: persistent_slab_present_future
+PR-AUC:            0.77186
+PR-AUC baseline:   0.05947
+PR-AUC lift:       12.98x
+ROC-AUC:           0.96536
+Seasonal importance: 3.93%
+Best iteration: 34
+Fold 1: PR-AUC=0.77186
+
+======================================================================
+persistent_slab_present_future - ROLLING FOLD 2
+======================================================================
+Train:      2021 -> 2024
+Validation: 2025 -> 2025
+
+======================================================================
+OPTIMIZING TARGET: persistent_slab_present_future
+======================================================================
+Validation positives: 23 / 636 (3.616%)
+PR-AUC baseline: 0.03616
+Candidate configurations: 30
+[ 1/30] PR-AUC=0.09651 | Baseline=0.03616 | Lift=2.67x | ROC-AUC=0.74250 | weight=2.00 | seasonal=0.00%
+[ 2/30] PR-AUC=0.09432 | Baseline=0.03616 | Lift=2.61x | ROC-AUC=0.75317 | weight=20.00 | seasonal=0.00%
+[ 3/30] PR-AUC=0.33874 | Baseline=0.03616 | Lift=9.37x | ROC-AUC=0.86705 | weight=2.00 | seasonal=8.15%
+[ 4/30] PR-AUC=0.08180 | Baseline=0.03616 | Lift=2.26x | ROC-AUC=0.71225 | weight=20.00 | seasonal=0.00%
+[ 5/30] PR-AUC=0.55281 | Baseline=0.03616 | Lift=15.29x | ROC-AUC=0.84963 | weight=1.50 | seasonal=0.00%
+[ 6/30] PR-AUC=0.14647 | Baseline=0.03616 | Lift=4.05x | ROC-AUC=0.81836 | weight=20.00 | seasonal=9.87%
+[ 7/30] PR-AUC=0.32143 | Baseline=0.03616 | Lift=8.89x | ROC-AUC=0.84073 | weight=1.00 | seasonal=0.00%
+[ 8/30] PR-AUC=0.37571 | Baseline=0.03616 | Lift=10.39x | ROC-AUC=0.86354 | weight=20.00 | seasonal=14.62%
+[ 9/30] PR-AUC=0.29673 | Baseline=0.03616 | Lift=8.21x | ROC-AUC=0.87315 | weight=2.00 | seasonal=51.53%
+[10/30] PR-AUC=0.25976 | Baseline=0.03616 | Lift=7.18x | ROC-AUC=0.82605 | weight=1.00 | seasonal=38.79%
+[11/30] PR-AUC=0.39786 | Baseline=0.03616 | Lift=11.00x | ROC-AUC=0.91368 | weight=2.00 | seasonal=11.56%
+[12/30] PR-AUC=0.14837 | Baseline=0.03616 | Lift=4.10x | ROC-AUC=0.78637 | weight=3.00 | seasonal=0.00%
+[13/30] PR-AUC=0.35521 | Baseline=0.03616 | Lift=9.82x | ROC-AUC=0.90457 | weight=1.00 | seasonal=56.26%
+[14/30] PR-AUC=0.21646 | Baseline=0.03616 | Lift=5.99x | ROC-AUC=0.82853 | weight=1.00 | seasonal=10.28%
+[15/30] PR-AUC=0.42868 | Baseline=0.03616 | Lift=11.85x | ROC-AUC=0.85644 | weight=10.00 | seasonal=3.55%
+[16/30] PR-AUC=0.09632 | Baseline=0.03616 | Lift=2.66x | ROC-AUC=0.76232 | weight=20.00 | seasonal=0.00%
+[17/30] PR-AUC=0.13885 | Baseline=0.03616 | Lift=3.84x | ROC-AUC=0.78665 | weight=3.00 | seasonal=51.31%
+[18/30] PR-AUC=0.35773 | Baseline=0.03616 | Lift=9.89x | ROC-AUC=0.84669 | weight=2.00 | seasonal=0.00%
+[19/30] PR-AUC=0.31889 | Baseline=0.03616 | Lift=8.82x | ROC-AUC=0.87691 | weight=1.00 | seasonal=11.43%
+[20/30] PR-AUC=0.34335 | Baseline=0.03616 | Lift=9.49x | ROC-AUC=0.82492 | weight=1.50 | seasonal=0.00%
+[21/30] PR-AUC=0.29383 | Baseline=0.03616 | Lift=8.13x | ROC-AUC=0.81282 | weight=1.50 | seasonal=0.00%
+[22/30] PR-AUC=0.21854 | Baseline=0.03616 | Lift=6.04x | ROC-AUC=0.82346 | weight=2.00 | seasonal=0.00%
+[23/30] PR-AUC=0.56646 | Baseline=0.03616 | Lift=15.66x | ROC-AUC=0.89205 | weight=1.00 | seasonal=7.92%
+[24/30] PR-AUC=0.30725 | Baseline=0.03616 | Lift=8.50x | ROC-AUC=0.85424 | weight=10.00 | seasonal=8.49%
+[25/30] PR-AUC=0.06647 | Baseline=0.03616 | Lift=1.84x | ROC-AUC=0.68735 | weight=10.00 | seasonal=0.00%
+[26/30] PR-AUC=0.09681 | Baseline=0.03616 | Lift=2.68x | ROC-AUC=0.75665 | weight=15.00 | seasonal=0.00%
+[27/30] PR-AUC=0.23511 | Baseline=0.03616 | Lift=6.50x | ROC-AUC=0.85226 | weight=1.50 | seasonal=29.32%
+[28/30] PR-AUC=0.07309 | Baseline=0.03616 | Lift=2.02x | ROC-AUC=0.71402 | weight=10.00 | seasonal=0.34%
+[29/30] PR-AUC=0.30940 | Baseline=0.03616 | Lift=8.56x | ROC-AUC=0.78201 | weight=1.00 | seasonal=57.58%
+[30/30] PR-AUC=0.40947 | Baseline=0.03616 | Lift=11.32x | ROC-AUC=0.90265 | weight=1.00 | seasonal=56.33%
+----------------------------------------------------------------------
+BEST VALID MODEL: persistent_slab_present_future
+PR-AUC:            0.56646
+PR-AUC baseline:   0.03616
+PR-AUC lift:       15.66x
+ROC-AUC:           0.89205
+Seasonal importance: 7.92%
+Best iteration: 7
+Fold 2: PR-AUC=0.56646
+
+======================================================================
+ROLLING VALIDATION SUMMARY: persistent_slab_present_future
+======================================================================
+Fold 1 PR-AUC: 0.77186
+Fold 2 PR-AUC: 0.56646
+Mean PR-AUC:    0.66916
+
+TRAINED persistent_slab_present_future: Mean rolling PR-AUC=0.66916, seasonal=3.93%
+
+----------------------------------------------------------------------
+TEST RESULTS: persistent_slab_present_future
+----------------------------------------------------------------------
+PR-AUC:            0.30438
+ROC-AUC:           0.88386
+F1:                0.38596
+Precision:         0.29730
+Recall:            0.55000
+Specificity:       0.95717
+Balanced accuracy: 0.75358
+MCC:               0.37821
+
+======================================================================
+TRAINING COMPLETE
+======================================================================
+Models: /Users/ellie/SURP_2026_2.0_persistentSlab/trained_models
+Summary: /Users/ellie/SURP_2026_2.0_persistentSlab/trained_models/training_summary.csv
+Exception ignored in: <function ResourceTracker.__del__ at 0x103b85b20>
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 82, in __del__
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 91, in _stop
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 116, in _stop_locked
+ChildProcessError: [Errno 10] No child processes
+Exception ignored in: <function ResourceTracker.__del__ at 0x104c51b20>
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 82, in __del__
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 91, in _stop
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 116, in _stop_locked
+ChildProcessError: [Errno 10] No child processes
+Exception ignored in: <function ResourceTracker.__del__ at 0x105d59b20>
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 82, in __del__
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 91, in _stop
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 116, in _stop_locked
+ChildProcessError: [Errno 10] No child processes
+Exception ignored in: <function ResourceTracker.__del__ at 0x105f85b20>
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 82, in __del__
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 91, in _stop
+  File "/opt/anaconda3/lib/python3.13/multiprocessing/resource_tracker.py", line 116, in _stop_locked
+ChildProcessError: [Errno 10] No child processes
